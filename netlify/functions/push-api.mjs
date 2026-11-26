@@ -1,6 +1,6 @@
 import {json,keyForToken,vapidReady,configurePush,store,validSubscription,normalizeItems} from '../lib/push-common.mjs';
 export default async function handler(req){
- if(req.method==='GET')return json({ready:vapidReady(),vapidPublicKey:vapidReady()?process.env.VAPID_PUBLIC_KEY:null});
+ if(req.method==='GET')return json({ready:vapidReady(),missing:['VAPID_PUBLIC_KEY','VAPID_PRIVATE_KEY','VAPID_SUBJECT'].filter(k=>!process.env[k])});{ready:vapidReady(),vapidPublicKey:vapidReady()?process.env.VAPID_PUBLIC_KEY:null});
  if(req.method!=='POST')return json({error:'허용되지 않은 요청'},405);
  if(!vapidReady())return json({error:'서버 VAPID 설정이 없어.'},503);
  const origin=req.headers.get('origin');if(origin&&origin!==new URL(req.url).origin)return json({error:'같은 사이트에서만 사용할 수 있어.'},403);
