@@ -1,0 +1,13 @@
+{
+  "name": "harugyeol-push",
+  "private": true,
+  "version": "3.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node -e \"console.log('하루결 정적 앱 준비 완료')\""
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.1.11",
+    "web-push": "^3.6.7"
+  }
+}
